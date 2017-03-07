@@ -1,0 +1,62 @@
+﻿#container{
+    background-color:#8A92B3;
+    width:100%;
+    min-height:100%;
+}
+/* Video overlay op home pagina*/
+#videoContainer{
+    overflow: hidden;
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+}
+#videoContainer > video{
+    object-fit:cover;
+    width: 100%;
+    height: 65%;
+
+}
+/* inputs over video voor zoeken*/
+#inputsContainer{
+    background:rgba(138,146,179,0.3);
+    height:300px;
+    margin-top:-175px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+}
+
+/* Scrollbar aan rechterkant*/
+::-webkit-scrollbar {
+
+    background:rgba(138,146,179,0.5);
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+/* style bug fixes */
+.menu-display{
+    position:absolute;
+    z-index:100;
+}
+
+/* laad icoon voordat pagina geladen is*/
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(/gif/loading.gif) center no-repeat #8A92B3;
+}

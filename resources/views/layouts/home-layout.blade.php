@@ -1,50 +1,61 @@
 <?php
-$videoArray = array('asol','azir','braum','draven','rift','rumble', 'syndra', 'velkoz', 'warwick', 'yasuo');
-$i = rand(0,count($videoArray));
+$videoArray = array('asol','braum','nami','rift','rumble', 'syndra', 'velkoz', 'lissandra', 'yasuo', 'zed');
+$i = round(rand(0,count($videoArray)));
+if($i > (count($videoArray) -1)){$i = (count($videoArray) -2);}
 $currentVideo = $videoArray[$i];
 ?>
 <html>
 <head>
     <title> @yield('title') </title>
-    <link href="{{ URL::asset('css/menu-home/menu.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('css/menu-home/style.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('css/lib/font-awesome.min.css') }}" rel="stylesheet" />
-    
+    @yield('style-links')
 </head>
 <body>
-    <div class="menu-wrap">
-        <nav class="menu">
-            <div class="icon-list">
-                <a href="#">
-                    <i class="fa fa-fw fa-envelope-o"></i>
-                    <span>Summoner search</span>
-                </a>
-                <a href="#">
-                    <i class="fa fa-fw fa-eye"></i>
-                    <span>Top tier</span>
-                </a>
-                <a href="#">
-                    <i class="fa fa-fw fa-bell-o"></i>
-                    <span>Live game search</span>
-                </a>
-            </div>
+<!-- Loading button -->
+<div class="se-pre-con"></div> <script>$(window).load(function() {$(".se-pre-con").fadeOut("slow");;});</script>
+<!-- Einde loading button -->
+<div id="container">
+    <div class="menu-display">
+        <nav id="bt-menu" class="bt-menu">
+            <a href="#" class="bt-menu-trigger zindex">
+                <span>Menu</span>
+            </a>
+            <ul>
+                @yield('menu-items')
+            </ul>
         </nav>
-    </div>
-    <button class="menu-button" id="open-button"></button>
-    <div class="content-wrap">
-        <div id="container">
-            <div id="videoContainer">
-                <video class="vid" autoplay muted loop>
-                    <source src="video/<?php echo $currentVideo; ?>.mp4" type="video/mp4"/>
-                <video>
+     </div>
 
-                <div id="inputsContainer"></div>
-            </div>
-            <div id="instructionContainer">
-
-            </div>
-        </div>
+    <div id="videoContainer">
+        <video class="vid" autoplay muted loop>
+        <source src="video/<?php echo $currentVideo; ?>.mp4" type="video/mp4"/>
+        <video>
     </div>
-    <script src="{{ URL::asset('js/menu-home/script.js') }}"></script>
+
+    <div class="col-xs-0 col-sm-1 col-md-2 col-lg-2"></div>
+    <div id="inputsContainer" class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+        <section>
+				<span class="input input--kohana">
+					<input class="input__field input__field--kohana" type="text" id="input-29" />
+					<label class="input__label input__label--kohana" for="input-29">
+						<i class="fa fa-fw fa-user icon icon--kohana"></i>
+						<span class="input__label-content input__label-content--kohana">Summoner name</span>
+					</label>
+				</span>
+         </section>
+         <section>
+             <select class="cs-select cs-skin-elastic">
+                 <option value="" disabled selected>Select a Country</option>
+                 <option value="france" data-class="flag-france">France</option>
+                 <option value="brazil" data-class="flag-brazil">Brazil</option>
+                 <option value="argentina" data-class="flag-argentina">Argentina</option>
+                 <option value="south-africa" data-class="flag-safrica">South Africa</option>
+             </select>
+         </section>
+    </div>
+    <div class="col-xs-0 col-sm-1 col-md-2 col-lg-2"></div>
+
+
+</div>
+       @yield('js-links')
 </body>
 </html>
